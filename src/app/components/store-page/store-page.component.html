@@ -1,0 +1,41 @@
+<div class="flex">
+    <div class="w-1/4 p-4 bg-gray-100 rounded-lg shadow-lg">
+      <h3 class="text-lg font-bold mb-4">Filter by Category</h3>
+      <div *ngFor="let category of categories" class="mb-2">
+        <label class="flex items-center">
+          <input
+            type="checkbox"
+            [checked]="isSelected(category)"
+            (change)="toggleCategory(category)"
+            class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+          />
+          <span class="ml-2 text-gray-700">{{ formatCategoryName(category) }}</span>
+        </label>
+      </div>
+      <a href="./dashboard" class="mt-8 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Back to Homepage</a>
+    </div>
+  
+    <div class="w-3/4 p-4">
+      <div class="flex justify-between">
+        <h3 class="text-lg font-bold mb-4">Products</h3>
+        <a [routerLink]="['/cart']" class="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+          <mat-icon class="mr-2">shopping_cart</mat-icon>
+          Cart
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div *ngFor="let product of filteredProducts" class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+          <img [src]="product.api_featured_image" alt="{{ product.name }}" class="w-96 h-96 object-cover rounded-md mb-2" />
+          <h4 class="font-semibold text-xl text-center">{{ product.name }}</h4>
+          <p class="text-gray-600 text-center" [innerHTML]="getSafeDescription(truncateDescription(product.description))"></p>
+          <p class="text-gray-500 text-center">Type: {{ formatCategoryName(product.product_type) }}</p>
+          
+        
+          <a [routerLink]="['/product', product.id]" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+            View Product
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  

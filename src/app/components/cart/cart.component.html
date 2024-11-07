@@ -1,0 +1,27 @@
+<div class="flex flex-row justify-between">
+    <h2>Your Cart</h2>
+    <a [routerLink]="['/store-page']" class="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+      <mat-icon class="mr-2">shopping_cart</mat-icon>
+      Back to Shopping
+    </a>
+  </div>
+  
+  <div *ngIf="cartItems$ | async as products; else noItems">
+    <div *ngIf="products.length > 0; else emptyCart" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let product of products" class="border p-4 rounded shadow">
+        <img [src]="product.api_featured_image" alt="{{ product.name }}" class="w-full h-96 object-cover">
+        <h3 class="font-bold mt-2">{{ product.name }}</h3>
+        <p>Price: {{ product.price | currency }}</p>
+        <button (click)="removeFromCart(product.id)" class="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">Remove</button>
+      </div>
+    </div>
+    
+    <ng-template #emptyCart>
+      <p>Your cart is empty.</p>
+    </ng-template>
+  </div>
+  
+  <ng-template #noItems>
+    <p>Loading cart...</p>
+  </ng-template>
+  

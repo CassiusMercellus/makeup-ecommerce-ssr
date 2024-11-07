@@ -1,0 +1,14 @@
+<div class="register-card">
+    <div class="register">
+        <label for="email">email</label>
+        <input id="email" type="text" placeholder="enter email" [(ngModel)]="email">
+        <label for="password">Password</label>
+        <input id="password" type="text" placeholder="enter password" [(ngModel)]="password">
+    </div>
+    <button type="button" class="login-button" (click)="register()">Register</button>
+
+    <div class="flex">
+        <p class="no-account">Already have an account? <a href="/login" class="no-account" style="text-decoration: none;">Login</a></p>
+    </div>
+    
+</div>

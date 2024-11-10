@@ -1,14 +1,22 @@
-<div class="register-card">
-    <div class="register">
-        <label for="email">email</label>
-        <input id="email" type="text" placeholder="enter email" [(ngModel)]="email">
-        <label for="password">Password</label>
-        <input id="password" type="text" placeholder="enter password" [(ngModel)]="password">
-    </div>
-    <button type="button" class="login-button" (click)="register()">Register</button>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="register-card bg-white shadow-lg rounded-lg p-8 max-w-md mx-auto">
+        <div class="register space-y-4">
+            <label for="email" class="block text-gray-700 font-semibold">Email</label>
+            <input id="email" type="text" placeholder="Enter email" [(ngModel)]="email" 
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-    <div class="flex">
-        <p class="no-account">Already have an account? <a href="/login" class="no-account" style="text-decoration: none;">Login</a></p>
+            <label for="password" class="block text-gray-700 font-semibold">Password</label>
+            <input id="password" type="password" placeholder="Enter password" [(ngModel)]="password" 
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <button type="button" class="login-button w-full bg-green-600 text-white font-semibold py-2 mt-6 rounded-lg hover:bg-green-700 transition-colors"
+                (click)="register()">Register</button>
+
+        <div class="flex justify-between mt-4 text-sm">
+            <p class="no-account text-gray-600">
+                Already have an account? <a href="/login" class="text-blue-600 hover:underline">Login</a>
+            </p>
+        </div>
     </div>
-    
 </div>
